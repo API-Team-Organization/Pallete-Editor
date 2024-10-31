@@ -1,5 +1,5 @@
 [package]
-name = "Palette-Editor"
+name = "palette-editor"
 version = "0.1.0"
 edition = "2021"
 
@@ -10,5 +10,6 @@ path = "src/lib.rs"
 
 [dependencies]
 wasm-bindgen = "0.2.93"
-web-sys = { version = "0.3.70", features = ["Element", "MouseEvent", "Window", "Document"] }
+web-sys = { version = "0.3.70", features = ["Element", "MouseEvent", "Window", "Document", "Worker"] }
 js-sys = "0.3.70"
+wasm-bindgen-test = "0.3"

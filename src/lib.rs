@@ -1,8 +1,7 @@
 use wasm_bindgen::prelude::*;
-use web_sys::{Element, MouseEvent};
 
 #[wasm_bindgen]
-#[derive(Clone, Debug)]
+#[derive(Copy, Clone, Debug)]
 pub struct Point {
     x: f64,
     y: f64,
@@ -27,7 +26,7 @@ impl Point {
 }
 
 #[wasm_bindgen]
-#[derive(Clone, Debug)]
+#[derive(Copy, Clone, Debug)]
 pub struct Size {
     width: f64,
     height: f64,
@@ -110,15 +109,5 @@ impl DraggableBlock {
     pub fn stop(&mut self) {
         self.is_dragging = false;
         self.is_resizing = false;
-    }
-
-    #[wasm_bindgen(getter)]
-    pub fn position(&self) -> Point {
-        self.position.clone()
-    }
-
-    #[wasm_bindgen(getter)]
-    pub fn size(&self) -> Size {
-        self.size.clone()
     }
 }
