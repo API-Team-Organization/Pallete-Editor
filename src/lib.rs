@@ -73,4 +73,12 @@ impl DraggableBlock {
             drag_start: Point::new(0.0, 0.0),
         }
     }
+
+    pub fn start_drag(&mut self, mouse_x: f64, mouse_y: f64) {
+        self.is_dragging = true;
+        self.drag_start = Point::new(
+            mouse_x - self.position.x,
+            mouse_y - self.position.y,
+        );
+    }
 }
