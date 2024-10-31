@@ -88,6 +88,30 @@ impl DraggableBlock {
         self.drag_start = Point::new(mouse_x, mouse_y);
     }
 
+    pub fn update(&mut self, mouse_x: f64, mouse_y: f64) {
+        if self.is_dragging {
+            self.position = Point::new(
+                mouse_x - self.drag_start.x,
+                mouse_y - self.drag_start.y,
+            );
+        } else if self.is_resizing {
+            let dx: f64 = mouse_x - self.drag_start.x;
+            let dy: f64 = mouse_y - self.drag_start.y;
+
+            self.size = Size::new(
+                (self.size.width + dx).max(self.min_size.width),
+                (self.size.height + dy).max(self.min_size.height),
+            );
+
+            self.drag_start = Point::new(mouse_x, mouse_y);
+        }
+    }
+
+    pub fn stop(&mut self) {
+        self.is_dragging = false;
+        self.is_resizing = false;
+    }
+
     #[wasm_bindgen(getter)]
     pub fn position(&self) -> Point {
         self.position.clone()
