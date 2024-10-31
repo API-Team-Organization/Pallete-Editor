@@ -31,3 +31,22 @@ pub struct Size {
     width: f64,
     height: f64,
 }
+
+#[wasm_bindgen]
+impl Size {
+    #[wasm_bindgen(constructor)]
+    pub fn new(width: f64, height: f64) -> Size {
+        Size { width, height}
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn width(&self) -> f64 {
+        self.width
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn height(&self) -> f64 {
+        self.height
+    }
+}
+
