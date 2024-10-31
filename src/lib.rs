@@ -25,3 +25,9 @@ impl Point {
         self.y
     }
 }
+
+#[wasm_bindgen]
+pub struct Size {
+    width: f64,
+    height: f64,
+}
