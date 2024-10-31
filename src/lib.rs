@@ -27,6 +27,7 @@ impl Point {
 }
 
 #[wasm_bindgen]
+#[derive(Clone, Debug)]
 pub struct Size {
     width: f64,
     height: f64,
@@ -80,5 +81,20 @@ impl DraggableBlock {
             mouse_x - self.position.x,
             mouse_y - self.position.y,
         );
+    }
+
+    pub fn start_resize(&mut self, mouse_x: f64, mouse_y: f64) {
+        self.is_resizing = true;
+        self.drag_start = Point::new(mouse_x, mouse_y);
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn position(&self) -> Point {
+        self.position.clone()
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn size(&self) -> Size {
+        self.size.clone()
     }
 }
